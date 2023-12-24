@@ -1,13 +1,11 @@
 package com.BackendE.backendProject.models;
 
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ext.SqlBlobSerializer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import org.hibernate.annotations.Type;
 
 import java.sql.Blob;
 

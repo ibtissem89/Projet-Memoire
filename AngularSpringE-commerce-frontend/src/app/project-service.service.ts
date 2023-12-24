@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UserLogin } from './models/UserLogin';
 import { Register } from './models/Register';
 import { map } from 'rxjs/operators'
+import { NumberFormatStyle } from '@angular/common';
 
 
 
@@ -59,4 +60,18 @@ export class ProjectServiceService {
     return this.http.put("http://localhost:8080/updateproduct",product)
   }
 
+  addToCarte(iduser:number, product:any){
+    return this.http.post(`http://localhost:8080/carte/add/${iduser}`,product)
+  }
+  removeCartItem(carteItem:number){
+    return this.http.delete(`http://localhost:8080/carte/remove/${carteItem}`)
+  }
+
+  updateCarte(cartItemId:number,qte:number){
+    return this.http.put(`http://localhost:8080/carte/update/${cartItemId}`,qte)
+  }
+  getCartItems(idUser:number){
+    return this.http.get(`http://localhost:8080/carte/getCartItems/${idUser}`)
+  }
+ 
 }
