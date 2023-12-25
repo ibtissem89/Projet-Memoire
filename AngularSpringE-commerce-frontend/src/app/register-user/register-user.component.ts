@@ -49,9 +49,13 @@ export class RegisterUserComponent {
     console.log(register);
     if (this.registrationForm.valid) {
       this.service.registerUser(register).subscribe(
-        () => {
+        (data) => {
           console.log('Registration successful!');
-          if (this.registrationForm.value.privilege == 'admin') {
+          const res = data['userRole'];
+          localStorage.setItem('_id', data['id']);
+          localStorage.setItem('_email', data['userEmail']);
+          localStorage.setItem('_role', data['userRole']);
+          if (res.toLowerCase() != 'admin') {
             this.router.navigate(['/']);
           } else {
             this.router.navigate(['admin']);
