@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectServiceService } from '../project-service.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-checkout',
@@ -20,11 +21,15 @@ export class CheckoutComponent {
     console.log('Payment submitted!');
   }
   ngOnInit() {
-    this.getCarteByUser();
+    if (localStorage.getItem('_id') != null) {
+      this.getCarteByUser();
+    } else {
+      this.router.navigate(['login'])
+    }
   }
   getCarteByUser() {
-    // const iduser = localStorage.getItem('_id');
-    const iduser = 1;
+     const iduser = localStorage.getItem('_id');
+    
     if (iduser == null) {
       this.service.getCartItems(Number(iduser)).subscribe((items) => {
         console.log(items);

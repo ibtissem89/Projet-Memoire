@@ -14,31 +14,34 @@ import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShowuserComponent } from './admin/showuser/showuser.component';
+import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
 const routes: Routes = [
-  {path:"vitrine",redirectTo:'/',pathMatch:'full'},
-  {path:"",component:AllvitrineComponent},
-  {path:"login",component:LoginComponent},
-{path:"register",component:RegisterUserComponent},
-{path:"smartphone",component:SmartphoneComponent},
-{path:"mobile",component:MobileComponent},
-{path:"contact",component:ContactComponent},
-{path:"cart",component:CartComponent},
-{path:"checkout",component:CheckoutComponent},
+  { path: 'vitrine', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: AllvitrineComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterUserComponent },
+  { path: 'smartphone', component: SmartphoneComponent },
+  { path: 'mobile', component: MobileComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
 
-  {path:"admin",component:AdminpanelComponent,children:
-    [
-      {path:"addproduct",component:AddproductComponent},
-      {path:"showproduct",component:ShowproductComponent},
-      {path:"showuser",component:ShowuserComponent},
-      {path:"updateproduct/:id",component:UpdateproductComponent},
-      
-
-    ]},
-  {path:"**",component:ErrorPathRoutingComponent}
+  {
+    path: 'admin',
+    component: AdminpanelComponent,
+    children: [
+      { path: 'addproduct', component: AddproductComponent },
+      { path: 'showproduct', component: ShowproductComponent },
+      { path: 'showuser', component: ShowuserComponent },
+      { path: 'updateproduct/:id', component: UpdateproductComponent },
+      { path: 'reclamations', component: ReclamationsComponent },
+    ],
+  },
+  { path: '**', component: ErrorPathRoutingComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

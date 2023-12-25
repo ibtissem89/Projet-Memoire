@@ -25,7 +25,7 @@ export class ProjectServiceService {
   
   registerUser(register: any): Observable<any> {
     
-    return this.http.post('http://localhost:8080/registerUser',Register);
+    return this.http.post('http://localhost:8080/registerUser',register);
   }
  
   getallproducts():Observable<any>
@@ -43,7 +43,11 @@ export class ProjectServiceService {
   }
   Addcontact(contact : any):Observable<any>
   {
-      return this.http.post("http://localhost:8080/contact",contact);
+      return this.http.post("http://localhost:8080/reclamations/add",contact);
+
+  }
+  getAllReclamation():Observable<any>{
+    return this.http.get("http://localhost:8080/reclamations");
 
   }
 

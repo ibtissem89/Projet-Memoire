@@ -1,7 +1,12 @@
 export class Register {
+  constructor(
+    public nom: string,
+    public prénom: string,
+    public email: string,
+    public tél: string,
+    public mpass: string,
 
-
-  constructor(public nom:string,public prénom:string,public email:string,public tél:string,public mpass:string,public cpass:string,public genre :string)
-    {
-
-    }}
+    public genre: string,
+    public prvilege: string
+  ) {}
+}

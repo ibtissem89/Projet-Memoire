@@ -1,6 +1,5 @@
-
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProjectServiceService } from '../project-service.service';
 import { Register } from '../models/Register';
@@ -8,38 +7,61 @@ import swal from 'sweetalert';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
 })
-export class RegisterUserComponent{
+export class RegisterUserComponent {
+  registrationForm: FormGroup;
 
-
-
-
-  constructor(private router : Router, private service : ProjectServiceService)
-  {
-
-  }
- RegisterUser(formregister:NgForm)
-  {
-    let register : Register= new Register(formregister.value.nom,formregister.value.prénom,formregister.value.tél,formregister.value.mpass,formregister.value.cpass,formregister.value.genre,formregister.value.privilége);
-    console.log(register);
-
-    this.service.registerUser(register).subscribe(
+  constructor(
+    private router: Router,
+    private service: ProjectServiceService,
+    private fb: FormBuilder
+  ) {
+    this.registrationForm = this.fb.group(
       {
-      next:(data)=>
-      { 
-        this.router.navigate(["admin"]);
+        nom: ['', [Validators.required]],
+        prenom: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(3)]],
+        tel: ['', [Validators.required]],
+        genre: ['', [Validators.required]],
+        privilege: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
       },
-      error:(error)=>
-      {
-        swal("Oups", "Username or password wrong", "error");
-      }
-      }
-    )
-
-
-    
+      { validator: this.passwordMatchValidator }
+    );
   }
-
+  passwordMatchValidator(form: FormGroup) {
+    return form.get('password')?.value === form.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
+  RegisterUser() {
+    let register: Register = new Register(
+      this.registrationForm.value.nom,
+      this.registrationForm.value.prenom,
+      this.registrationForm.value.email,
+      this.registrationForm.value.tel,
+      this.registrationForm.value.password,
+      this.registrationForm.value.genre,
+      this.registrationForm.value.privilege
+    );
+    console.log(register);
+    if (this.registrationForm.valid) {
+      this.service.registerUser(register).subscribe(
+        () => {
+          console.log('Registration successful!');
+          if (this.registrationForm.value.privilege == 'admin') {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['admin']);
+          }
+        },
+        (error) => {
+          console.error('Registration failed:', error);
+          swal('Oups', 'Registration failed:', 'error');
+        }
+      );
+    }
+  }
 }
-

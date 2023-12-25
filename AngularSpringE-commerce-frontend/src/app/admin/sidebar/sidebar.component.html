@@ -87,6 +87,11 @@
               <i class="fa fa-magic" aria-hidden="true"></i> Show user
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['reclamations']">
+              <i class="fas fa-exclamation-circle"></i> Reclamations
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -105,10 +110,10 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center" (click)="signout()">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
+                  <img alt="Image placeholder" src="https://i.pinimg.com/564x/2e/4f/d3/2e4fd3fd8f2aff9c26b15c1f1c23b11e.jpg">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{userEmail}}</span>
                 </div>
               </div>
             </a>

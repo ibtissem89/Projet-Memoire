@@ -2,6 +2,7 @@ package com.BackendE.backendProject.controllers;
 
 import com.BackendE.backendProject.models.User;
 import com.BackendE.backendProject.requests.UserLogin;
+import com.BackendE.backendProject.requests.UserRegister;
 import com.BackendE.backendProject.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,5 +20,10 @@ public class LoginController {
     @PostMapping("/login")
     public User login(@RequestBody UserLogin userLogin) {
         return loginService.loginuser(userLogin);
+    }
+    
+    @PostMapping("/registerUser")
+    public User register(@RequestBody UserRegister userRegister) {
+        return loginService.registerUser(userRegister);
     }
 }
