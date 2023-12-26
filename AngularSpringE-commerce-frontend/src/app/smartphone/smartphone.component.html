@@ -4,8 +4,8 @@
 
 
 <!-- Shop Detail Start -->
-<div class="container-fluid py-5">
-    <div class="row px-xl-5">
+<div class="container-fluid py-5" >
+    <div class="row px-xl-5" *ngFor="let p of products">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">SMARTPHONES</span></h2>
         </div>
@@ -15,15 +15,9 @@
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
                     <div class="carousel-item active">
-                        <img class="w-100 h-100" src="assets/img/Galaxy A04S.png" alt="Image">
+                        <img class="w-100 h-100" [src]="'data:image/png;base64,'+p.image"   alt="Image">
                     </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/oppoA04S1.jpg" alt="Image">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/oppoA04S3.jpg" alt="Image">
-                    </div>
+                     
 
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -36,7 +30,7 @@
         </div>
 
         <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold">Galaxy A04S 4Go 64Go</h3>
+            <h3 class="font-weight-semi-bold">{{p.name}}</h3>
             <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
@@ -47,7 +41,7 @@
                 </div>
                 <small class="pt-1">(50 Reviews)</small>
             </div>
-            <h3 class="font-weight-semi-bold mb-4">679.OOO TND</h3>
+            <h3 class="font-weight-semi-bold mb-4">{{p.prix}} TND</h3>
             <p class="mb-4">le Samsung Galaxy A04S, un smartphone abordable avec des caractéristiques haut de gamme, une
                 caméra arrière de 50MP, une batterie longue durée et une connectivité complète pour une expérience
                 utilisateur exceptionnelle.</p>
@@ -55,153 +49,12 @@
 
         </div>
         <div class="d-flex align-items-center mb-4 pt-2">
-            <div class="input-group quantity mr-3" style="width: 130px;">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-minus">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-                <input type="text" class="form-control bg-secondary text-center" value="1">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-plus">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <button (click)="addToCarte()" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+          
+            <button (click)="addToCarte(p)" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                 Cart</button>
         </div>
 
     </div>
 </div>
-<!-- Shop Detail Start -->
-<div class="container-fluid py-5">
-    <div class="row px-xl-5">
-        <div class="col-lg-5 pb-5">
-            <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner border">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="assets/img/GALAXY A14.jpg" alt="Image">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/GALAXY A141.jpg" alt="Image">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/GALAXY A142.jpg" alt="Image">
-                    </div>
-
-                </div>
-                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
-                    <i class="fa fa-2x fa-angle-left text-dark"></i>
-                </a>
-                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
-                    <i class="fa fa-2x fa-angle-right text-dark"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold">SAMSUNG GALAXY A14 6 Go 128 Go</h3>
-            <div class="d-flex mb-3">
-                <div class="text-primary mr-2">
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star-half-alt"></small>
-                    <small class="far fa-star"></small>
-                </div>
-                <small class="pt-1">(50 Reviews)</small>
-            </div>
-            <h3 class="font-weight-semi-bold mb-4">759.OOO TND</h3>
-            <p class="mb-4">Le smartphone Samsung Galaxy A14 6 Go 128 Go offre des performances optimales pour une
-                utilisation quotidienne, avec un grand écran et une grande capacité de stockage. Découvrez-le dès
-                maintenant !</p>
-
-
-        </div>
-        <div class="d-flex align-items-center mb-4 pt-2">
-            <div class="input-group quantity mr-3" style="width: 130px;">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-minus">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-                <input type="text" class="form-control bg-secondary text-center" value="1">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-plus">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
-        </div>
-
-    </div>
-</div>
-<!-- Shop Detail Start -->
-<div class="container-fluid py-5">
-    <div class="row px-xl-5">
-        <div class="col-lg-5 pb-5">
-            <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner border">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="assets/img/redmi.jpg" alt="Image">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/redmi1.png" alt="Image">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="assets/img/redmi2.jpg" alt="Image">
-                    </div>
-
-                </div>
-                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
-                    <i class="fa fa-2x fa-angle-left text-dark"></i>
-                </a>
-                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
-                    <i class="fa fa-2x fa-angle-right text-dark"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold">Redmi 10 2022 4GO 128GO</h3>
-            <div class="d-flex mb-3">
-                <div class="text-primary mr-2">
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star-half-alt"></small>
-                    <small class="far fa-star"></small>
-                </div>
-                <small class="pt-1">(50 Reviews)</small>
-            </div>
-            <h3 class="font-weight-semi-bold mb-4">640.OOO TND</h3>
-            <p class="mb-4">Le Smartphone XIAOMI Redmi 10 2022 4 GO 128 GO est un téléphone performant et polyvalent
-                avec un écran FHD+ de 6,5 pouces, une batterie de 5000 mAh, une caméra quadruple, un processeur puissant
-                et une mémoire de stockage de 128 Go. Il est compétitif en termes de prix et offre de nombreuses
-                fonctionnalités, il est donc recommandé de le commander dès maintenant.</p>
-
-
-        </div>
-        <div class="d-flex align-items-center mb-4 pt-2">
-            <div class="input-group quantity mr-3" style="width: 130px;">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-minus">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-                <input type="text" class="form-control bg-secondary text-center" value="1">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-plus">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
-        </div>
-
-    </div>
-</div>
+ 
+ 

@@ -3,79 +3,67 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserLogin } from './models/UserLogin';
 import { Register } from './models/Register';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 import { NumberFormatStyle } from '@angular/common';
 
-
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectServiceService {
- 
-  listofproduct : any[]=[];
-  constructor(private http : HttpClient) { }
+  listofproduct: any[] = [];
+  constructor(private http: HttpClient) {}
 
-
-  loginUser(user:any):Observable<any>
-  {
-    return this.http.post('http://localhost:8080/login',user);
+  loginUser(user: any): Observable<any> {
+    return this.http.post('http://localhost:8080/login', user);
   }
-  
+
   registerUser(register: any): Observable<any> {
-    
-    return this.http.post('http://localhost:8080/registerUser',register);
-  }
- 
-  getallproducts():Observable<any>
-  {
-    return this.http.get("http://localhost:8080/getallproducts");
-  }
-  getallCategorys():Observable<any>
-  {
-    return this.http.get("http://localhost:8080/allCategorys");
-  }
-  addproduct(product : any):Observable<any>
-  {
-      return this.http.post("http://localhost:8080/addproduct",product);
-
-  }
-  Addcontact(contact : any):Observable<any>
-  {
-      return this.http.post("http://localhost:8080/reclamations/add",contact);
-
-  }
-  getAllReclamation():Observable<any>{
-    return this.http.get("http://localhost:8080/reclamations");
-
+    return this.http.post('http://localhost:8080/registerUser', register);
   }
 
-      deleteproduct(id:any):Observable<any>
-  {
-      return this.http.delete(`http://localhost:8080/deleteproduct/${id}`);
+  getallproducts(): Observable<any> {
+    return this.http.get('http://localhost:8080/getallproducts');
   }
-  geproductbyid(id:any):Observable<any>
-  {
-      return this.http.get(`http://localhost:8080/getproductbyid/${id}`);
+  getallproductsByCategory(categoryName:String): Observable<any> {
+    return this.http.get(`http://localhost:8080/getproductbyCategory/${categoryName}`);
   }
-  updateproduct(product:any):Observable<any>
-  {
-    return this.http.put("http://localhost:8080/updateproduct",product)
+  getallCategorys(): Observable<any> {
+    return this.http.get('http://localhost:8080/allCategorys');
+  }
+  addproduct(product: any): Observable<any> {
+    return this.http.post('http://localhost:8080/addproduct', product);
+  }
+  Addcontact(contact: any): Observable<any> {
+    return this.http.post('http://localhost:8080/reclamations/add', contact);
+  }
+  getAllReclamation(): Observable<any> {
+    return this.http.get('http://localhost:8080/reclamations');
   }
 
-  addToCarte(iduser:number, product:any){
-    return this.http.post(`http://localhost:8080/carte/add/${iduser}`,product)
+  deleteproduct(id: any): Observable<any> {
+    return this.http.delete(`http://localhost:8080/deleteproduct/${id}`);
   }
-  removeCartItem(carteItem:number){
-    return this.http.delete(`http://localhost:8080/carte/remove/${carteItem}`)
+  geproductbyid(id: any): Observable<any> {
+    return this.http.get(`http://localhost:8080/getproductbyid/${id}`);
+  }
+  updateproduct(product: any): Observable<any> {
+    return this.http.put('http://localhost:8080/updateproduct', product);
   }
 
-  updateCarte(cartItemId:number,qte:number){
-    return this.http.put(`http://localhost:8080/carte/update/${cartItemId}`,qte)
+  addToCarte(iduser: number, product: any) {
+    return this.http.post(`http://localhost:8080/carte/add/${iduser}`, product);
   }
-  getCartItems(idUser:number){
-    return this.http.get(`http://localhost:8080/carte/getCartItems/${idUser}`)
+  removeCartItem(carteItem: number) {
+    return this.http.delete(`http://localhost:8080/carte/remove/${carteItem}`);
   }
- 
+
+  updateCarte(cartItemId: number, qte: number) {
+    return this.http.put(
+      `http://localhost:8080/carte/update/${cartItemId}`,
+      qte
+    );
+  }
+  getCartItems(idUser: number) {
+    return this.http.get(`http://localhost:8080/carte/getCartItems/${idUser}`);
+  }
 }

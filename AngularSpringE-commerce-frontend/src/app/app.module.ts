@@ -24,7 +24,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SmartphoneComponent } from './smartphone/smartphone.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
- 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +49,9 @@ import { ReclamationsComponent } from './admin/reclamations/reclamations.compone
     ContactComponent,
     FooterComponent,
     HeaderComponent,
-    ReclamationsComponent
-   ],
+
+    ReclamationsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

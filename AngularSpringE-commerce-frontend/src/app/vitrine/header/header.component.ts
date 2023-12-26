@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProjectServiceService } from 'src/app/project-service.service';
 
 @Component({
   selector: 'app-header',
@@ -8,18 +9,30 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isLoged: boolean = false;
   useremail: String = '';
-  constructor() {}
-  ngOnInit(){
-    const storedEmail = localStorage.getItem("_email");
+  nbItemCarte: number = -1;
 
-     if (storedEmail !== null && storedEmail !== undefined) {
+  constructor(private service: ProjectServiceService) {}
+  ngOnInit() {
+    const storedEmail = localStorage.getItem('_email');
+    const iduser = localStorage.getItem('_id');
+
+    if (storedEmail !== null && storedEmail !== undefined) {
       this.useremail = storedEmail.toString();
-      this.isLoged=true;
+      this.isLoged = true;
+      this.service.getCartItems(Number(iduser)).subscribe((items) => {
+        if (items != null) {
+          let tempTab: any[] = items as any[];
+          console.log(items);
+          
+          this.nbItemCarte = tempTab.length;
+        }
+      });
+      this.nbItemCarte = 0;
     } else {
-      this.isLoged=false;
+      this.isLoged = false;
     }
   }
-  deconnexion(){
+  deconnexion() {
     localStorage.clear();
   }
 }

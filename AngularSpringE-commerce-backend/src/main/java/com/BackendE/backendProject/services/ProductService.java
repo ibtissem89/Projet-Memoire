@@ -1,5 +1,6 @@
 package com.BackendE.backendProject.services;
 
+import com.BackendE.backendProject.models.Category;
 import com.BackendE.backendProject.models.Product;
 import com.BackendE.backendProject.repository.ProductRepository;
 
@@ -7,7 +8,6 @@ import com.BackendE.backendProject.requests.ProductReq;
 import com.BackendE.backendProject.responses.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import javax.sql.rowset.serial.SerialBlob;
 import java.sql.Blob;
@@ -19,23 +19,20 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CatgeoryService catgeoryService;
 
-    public List<Product> getallproducts()
-    {
+    public List<Product> getallproducts() {
         return productRepository.findAll();
     }
 
-
     public Message deleteProduct(Integer id) {
         Optional<Product> Productbyid = productRepository.findById(id);
-        if(Productbyid.isPresent()==false)
-        {
+        if (Productbyid.isPresent() == false) {
             throw new IllegalStateException("Product dosent exist !");
-        }
-        else {
+        } else {
             productRepository.deleteById(id);
             Message m = new Message("Product has been deleted ! ");
             return m;
@@ -43,12 +40,14 @@ public class ProductService {
     }
 
     public Message addproduct(ProductReq productReq) throws SQLException {
-      byte[] decodedByte = Base64.getDecoder().decode(productReq.getImage());
-      Blob b = new SerialBlob(decodedByte);
-      Product p = new Product(productReq.getName(),productReq.getPrix(),b,productReq.getType());
-      productRepository.save(p);
-      Message m = new Message("Product has been added ! ");
-      return m;
+        byte[] decodedByte = Base64.getDecoder().decode(productReq.getImage());
+        Blob b = new SerialBlob(decodedByte);
+        // getting category by type name
+        Category categoryRes = catgeoryService.getCatogoryByName(productReq.getType()).get();
+        Product p = new Product(productReq.getName(), productReq.getPrix(), b, categoryRes);
+        productRepository.save(p);
+        Message m = new Message("Product has been added ! ");
+        return m;
 
     }
 
@@ -56,17 +55,16 @@ public class ProductService {
 
         System.out.println(productReq);
         Product productByid = productRepository.findById(productReq.getIdProduct()).orElse(null);
-        if(productByid==null)
-        {
+        if (productByid == null) {
             throw new IllegalStateException("Product dosent exist !");
-        }
-        else
-        {
+        } else {
+            // getting category by type name
+            Category categoryRes = catgeoryService.getCatogoryByName(productReq.getType()).get();
             byte[] decodedByte = Base64.getDecoder().decode(productReq.getImage());
             Blob b = new SerialBlob(decodedByte);
             productByid.setName(productReq.getName());
             productByid.setPrix(productReq.getPrix());
-            productByid.setType(productReq.getType());
+            productByid.setCategory(categoryRes);
             productByid.setImage(b);
             productRepository.save(productByid);
             Message m = new Message("Product has been updated ! ");
@@ -75,6 +73,11 @@ public class ProductService {
     }
 
     public Product getproductbyid(Integer id) {
-      return   this.productRepository.findById(id).orElse(null);
+        return this.productRepository.findById(id).orElse(null);
+    }
+
+    public List<Product> getProductsByCategory(String categoryname) {
+        Category resCategory = this.catgeoryService.getCatogoryByName(categoryname).get();
+        return this.productRepository.findByCategory(resCategory);
     }
 }

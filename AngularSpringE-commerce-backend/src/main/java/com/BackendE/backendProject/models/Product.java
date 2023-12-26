@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 
 import java.sql.Blob;
 
@@ -20,7 +21,9 @@ public class Product {
     @Lob
     @JsonSerialize(using = SqlBlobSerializer.class)
     private Blob image;
-    private String type;
+
+    @ManyToOne
+    private Category category;
 
     @Override
     public String toString() {
@@ -29,26 +32,26 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", prix='" + prix + '\'' +
                 ", image='" + image + '\'' +
-                ", type='" + type + '\'' +
+                ", type='" + category.getName() + '\'' +
                 '}';
     }
 
     public Product() {
     }
 
-    public Product(Integer idProduct, String name, String prix, Blob image, String type) {
+    public Product(Integer idProduct, String name, String prix, Blob image, Category type) {
         this.idProduct = idProduct;
         this.name = name;
         this.prix = prix;
         this.image = image;
-        this.type = type;
+        this.category = type;
     }
 
-    public Product(String name, String prix, Blob image, String type) {
+    public Product(String name, String prix, Blob image, Category type) {
         this.name = name;
         this.prix = prix;
         this.image = image;
-        this.type = type;
+        this.category = type;
     }
 
     public Integer getIdProduct() {
@@ -83,11 +86,12 @@ public class Product {
         this.image = image;
     }
 
-    public String getType() {
-        return type;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+
 }

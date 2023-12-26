@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CatgeoryService {
@@ -16,5 +17,8 @@ public class CatgeoryService {
 
     public List<Category> getallCategorys() {
         return this.categoryRepository.findAll();
+    }
+        public Optional<Category> getCatogoryByName(String name) {
+        return this.categoryRepository.findByName(name);
     }
 }
