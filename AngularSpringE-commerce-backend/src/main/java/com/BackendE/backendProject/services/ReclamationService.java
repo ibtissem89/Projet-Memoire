@@ -36,16 +36,16 @@ public class ReclamationService {
 
     public Reclamation createReclamation(ReclamationReq reclamation) {
         User resUser = loginService.getUserByEmail(reclamation.getEmail());
-                LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime currentDateTime = LocalDateTime.now();
 
         // Define a formatter to format the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         // Convert the date and time to a string using the formatter
         String formattedDateTime = currentDateTime.format(formatter);
-      
+
         Reclamation resRec = reclamationRepository
-                .save(new Reclamation(reclamation.getSujet(), reclamation.getMessage(), resUser,formattedDateTime));
+                .save(new Reclamation(reclamation.getSujet(), reclamation.getMessage(), resUser, formattedDateTime));
         String msg = "votre reclamation" + reclamation.getSujet() + " est bien recu par notre equipe";
         emailService.sendEmail(resUser.getUserEmail(), "Confirmation reception", msg);
         return resRec;

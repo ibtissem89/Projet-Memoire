@@ -1,0 +1,26 @@
+<h2>Commandes</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Amount</th>
+            <th>Date de creation</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cmd of commandes">
+            <td>{{ cmd.id }}</td>
+            <td>{{ cmd.user.userEmail }}</td>
+            <td>{{ cmd.amount }}</td>
+            <td>{{ cmd.orderDate}}</td>
+            <td>{{ cmd.status}} </td>
+            <td><button class="btn btn-warning btn-lg ms-2" (click)="updateStatus(cmd.id,cmd.status)"
+                    *ngIf="cmd.status=='accepted'">Not
+                    approve</button><button class="btn btn-warning btn-lg ms-2"
+                    (click)="updateStatus(cmd.id,cmd.status)" *ngIf="cmd.status=='not approved'"> Accept
+                </button></td>
+        </tr>
+    </tbody>
+</table>

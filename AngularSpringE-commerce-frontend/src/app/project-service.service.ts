@@ -24,8 +24,10 @@ export class ProjectServiceService {
   getallproducts(): Observable<any> {
     return this.http.get('http://localhost:8080/getallproducts');
   }
-  getallproductsByCategory(categoryName:String): Observable<any> {
-    return this.http.get(`http://localhost:8080/getproductbyCategory/${categoryName}`);
+  getallproductsByCategory(categoryName: String): Observable<any> {
+    return this.http.get(
+      `http://localhost:8080/getproductbyCategory/${categoryName}`
+    );
   }
   getallCategorys(): Observable<any> {
     return this.http.get('http://localhost:8080/allCategorys');
@@ -50,24 +52,33 @@ export class ProjectServiceService {
     return this.http.put('http://localhost:8080/updateproduct', product);
   }
 
-  addToCarte(iduser: number, product: any) {
+  addToCarte(iduser: number, product: any): Observable<any> {
     return this.http.post(`http://localhost:8080/carte/add/${iduser}`, product);
   }
-  removeCartItem(carteItem: number) {
+  removeCartItem(carteItem: number): Observable<any> {
     return this.http.delete(`http://localhost:8080/carte/remove/${carteItem}`);
   }
 
-  updateCarte(cartItemId: number, qte: number) {
+  updateCarte(cartItemId: number, qte: number): Observable<any> {
     return this.http.put(
       `http://localhost:8080/carte/update/${cartItemId}`,
       qte
     );
   }
-  getCartItems(idUser: number) {
+  getCartItems(idUser: number): Observable<any> {
     return this.http.get(`http://localhost:8080/carte/getCartItems/${idUser}`);
   }
-  addNewCommande(commande:any){
-    return this.http.post(`http://localhost:8080/commandes/new`,commande);
+  addNewCommande(commande: any): Observable<any> {
+    return this.http.post(`http://localhost:8080/commandes/new`, commande);
+  }
 
+  getAllCommandes(): Observable<any> {
+    return this.http.get('http://localhost:8080/commandes');
+   }
+  updateCommandeStatus(idOrder: number, newStatus: string): Observable<any> {
+    return this.http.put(
+      `http://localhost:8080/commandes/updateStatus/${idOrder}`,
+      newStatus
+    );
   }
 }

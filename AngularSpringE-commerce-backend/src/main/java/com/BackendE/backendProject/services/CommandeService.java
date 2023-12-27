@@ -1,6 +1,7 @@
 package com.BackendE.backendProject.services;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,8 +42,15 @@ public class CommandeService {
         // Create a new order
         Commande orderEntity = new Commande();
         orderEntity.setUser(user);
-        orderEntity.setOrderDate(LocalDateTime.now());
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Define a formatter to format the date and time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        // Convert the date and time to a string using the formatter
+        String formattedDateTime = currentDateTime.format(formatter);
+        orderEntity.setOrderDate(formattedDateTime);
         orderEntity.setAmount(order.getAmount());
+        orderEntity.setStatus("not approved");// default until admin approve on it 
 
         // Save the order to get the generated ID
         Commande savedOrder = commandeRepository.save(orderEntity);
@@ -69,5 +77,11 @@ public class CommandeService {
 
     public void deleteOrder(Long orderId) {
         commandeRepository.deleteById(orderId);
+    }
+
+    public Commande updateCommande(Long orderId, String newStatus) {
+        Commande c = getOrderById(orderId);
+        c.setStatus(newStatus);
+        return commandeRepository.save(c);
     }
 }

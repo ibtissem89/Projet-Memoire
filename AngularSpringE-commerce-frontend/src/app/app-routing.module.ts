@@ -16,6 +16,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ShowuserComponent } from './admin/showuser/showuser.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CommandesComponent } from './admin/commandes/commandes.component';
 const routes: Routes = [
   { path: 'vitrine', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: AllvitrineComponent },
@@ -33,7 +34,7 @@ const routes: Routes = [
     children: [
       { path: 'addproduct', component: AddproductComponent },
       { path: 'showproduct', component: ShowproductComponent },
-      { path: 'showuser', component: ShowuserComponent },
+      { path: 'commandes', component: CommandesComponent },
       { path: 'updateproduct/:id', component: UpdateproductComponent },
       { path: 'reclamations', component: ReclamationsComponent },
     ],

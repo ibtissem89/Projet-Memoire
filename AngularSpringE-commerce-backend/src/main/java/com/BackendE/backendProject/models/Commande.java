@@ -23,11 +23,13 @@ public class Commande {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    private LocalDateTime orderDate;
+    private String orderDate;
     @ManyToOne
     private User user;
 
     private double amount;
+
+    private String status;// accepted /rejected
 
     public double getAmount() {
         return amount;
@@ -41,13 +43,13 @@ public class Commande {
 
     }
 
-    public Commande(User user, List<OrderItem> orderItems, LocalDateTime orderDate) {
+    public Commande(User user, List<OrderItem> orderItems, String orderDate) {
         this.user = user;
         this.orderItems = orderItems;
         this.orderDate = orderDate;
     }
 
-    public Commande(Long id, List<OrderItem> orderItems, LocalDateTime orderDate, User user) {
+    public Commande(Long id, List<OrderItem> orderItems, String orderDate, User user) {
         this.id = id;
         this.orderItems = orderItems;
         this.orderDate = orderDate;
@@ -78,12 +80,20 @@ public class Commande {
         this.orderItems = orderItems;
     }
 
-    public LocalDateTime getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }
