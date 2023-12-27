@@ -50,20 +50,20 @@ export class RegisterUserComponent {
     if (this.registrationForm.valid) {
       this.service.registerUser(register).subscribe(
         (data) => {
-          console.log('Registration successful!');
+          console.log('Inscription réussie !');
           const res = data['userRole'];
           localStorage.setItem('_id', data['id']);
           localStorage.setItem('_email', data['userEmail']);
           localStorage.setItem('_role', data['userRole']);
-          if (res.toLowerCase() != 'admin') {
+          if (res.toLowerCase() !== 'admin') {
             this.router.navigate(['/']);
           } else {
             this.router.navigate(['admin']);
           }
         },
         (error) => {
-          console.error('Registration failed:', error);
-          swal('Oups', 'Registration failed:', 'error');
+          console.error("Échec de l'inscription :", error);
+          swal('Oups', "Échec de l'inscription :", 'error');
         }
       );
     }

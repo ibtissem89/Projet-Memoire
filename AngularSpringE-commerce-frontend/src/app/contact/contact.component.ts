@@ -13,27 +13,29 @@ import swal from 'sweetalert';
 export class ContactComponent implements OnInit {
   message: any = '';
 
-  constructor(private service: ProjectServiceService,    private router: Router,
-    ) {}
+  constructor(private service: ProjectServiceService, private router: Router) {}
 
   ngOnInit(): void {}
   addcontact(form: NgForm) {
-    let valueofform = form.value;
+    let formValues = form.value;
 
     {
-      let contact = new Reclamation(
-        valueofform.nom,
-        valueofform.email,
-        valueofform.sujet,
-        valueofform.message
+      let reclamation = new Reclamation(
+        formValues.nom,
+        formValues.email,
+        formValues.sujet,
+        formValues.message
       );
-      this.service.Addcontact(contact).subscribe({
+      this.service.addReclamation(reclamation).subscribe({
         next: (data) => {
-          swal('Done !', 'Your claim has been added!', 'success').finally(()=> this.router.navigate(["/"]));
-
+          swal(
+            'Terminé !',
+            'Votre réclamation a été ajoutée !',
+            'success'
+          ).finally(() => this.router.navigate(['/']));
         },
         error: (err) => {
-          swal('Sorry!', 'You need to try later !', 'error');
+          swal('Désolé !', 'Veuillez réessayer plus tard !', 'error');
         },
       });
     }

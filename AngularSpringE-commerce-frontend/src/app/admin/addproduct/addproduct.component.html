@@ -5,7 +5,7 @@
       <div class="formbold-input-flex">
         <div>
           <input ngModel type="text" name="name" id="name" placeholder="Jane" class="formbold-form-input" />
-          <label for="name" class="formbold-form-label"> Name </label>
+          <label for="name" class="formbold-form-label"> Nom </label>
         </div>
       </div>
       <div class="formbold-input-flex">
@@ -24,9 +24,9 @@
 
       <div class="formbold-input-flex">
         <div>
-          <!-- <input ngModel type="text" name="type" id="type" placeholder="trandy, ...." class="formbold-form-input" /> -->
+          <!-- <input ngModel type="text" name="type" id="type" placeholder="tendance, ...." class="formbold-form-input" /> -->
           <select id="category" ngModel name="type">
-            <option value="" disabled selected>Select a category</option>
+            <option value="" disabled selected>Sélectionnez une catégorie</option>
             <option *ngFor="let c of categories" [value]="c.name">{{ c.name }}</option>
           </select>
           <label for="type" class="formbold-form-label"> Type </label>
@@ -48,13 +48,13 @@
               </clipPath>
             </defs>
           </svg>
-          Attach files
+          Joindre des fichiers
           <input type="file" (change)="getfile($event)" name="upload" id="upload">
         </label>
       </div>
 
       <button (click)="addproduct(addproductform)" class="formbold-btn">
-        Add product
+        Ajouter le produit
       </button>
     </form>
   </div>

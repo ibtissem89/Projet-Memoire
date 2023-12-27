@@ -1,10 +1,7 @@
 <app-header></app-header>
 
-
-
-
-<!-- Shop Detail Start -->
-<div class="container-fluid py-5" >
+<!-- Détails du Produit -->
+<div class="container-fluid py-5">
     <div class="row px-xl-5" *ngFor="let p of products">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">SMARTPHONES</span></h2>
@@ -15,10 +12,8 @@
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
                     <div class="carousel-item active">
-                        <img class="w-100 h-100" [src]="'data:image/png;base64,'+p.image"   alt="Image">
+                        <img class="w-100 h-100" [src]="'data:image/png;base64,'+p.image" alt="Image">
                     </div>
-                     
-
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                     <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -39,20 +34,15 @@
                     <small class="fas fa-star-half-alt"></small>
                     <small class="far fa-star"></small>
                 </div>
-                <small class="pt-1">(50 Reviews)</small>
+                <small class="pt-1">(50 Avis)</small>
             </div>
             <h3 class="font-weight-semi-bold mb-4">{{p.prix}} TND</h3>
             <p class="mb-4">{{p.description}}</p>
-
-
         </div>
+
         <div class="d-flex align-items-center mb-4 pt-2">
-          
-            <button (click)="addToCarte(p)" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                Cart</button>
+            <button (click)="addToCarte(p)" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Ajouter au Panier</button>
         </div>
 
     </div>
 </div>
- 
- 

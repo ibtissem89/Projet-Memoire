@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<!-- Cart Start -->
+<!-- Panier Début -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
         <div class="col-lg-8 table-responsive mb-5">
@@ -9,7 +9,7 @@
                     <tr>
                         <th>Produits</th>
                         <th>Prix</th>
-                        <th>Quatité</th>
+                        <th>Quantité</th>
                         <th>Total</th>
                         <th>Retirer</th>
                     </tr>
@@ -44,14 +44,7 @@
             </table>
         </div>
         <div class="col-lg-4">
-            <form class="mb-5" action="">
-                <div class="input-group">
-                    <input type="text" class="form-control p-4" placeholder="Coupon Code">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">Appliquer Coupon</button>
-                    </div>
-                </div>
-            </form>
+         
             <div class="card border-secondary mb-5">
                 <div class="card-header bg-secondary border-0">
                     <h4 class="font-weight-semi-bold m-0">Panier</h4>
@@ -71,11 +64,10 @@
                         <h5 class="font-weight-bold">Total à Payer</h5>
                         <h5 class="font-weight-bold">${{total-reduction}}</h5>
                     </div>
-                    <button (click)="toPayment()" class="btn btn-block btn-primary my-3 py-3">Passer à la
-                        Paiement</button>
+                    <button (click)="toPayment()" class="btn btn-block btn-primary my-3 py-3">Passer à la Paiement</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Cart End -->
+<!-- Panier Fin -->

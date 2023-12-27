@@ -1,22 +1,24 @@
-<p>reclamations works!</p>
-  <h2>Reclamations</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Email</th>
-          <th>Sujet</th>
-          <th>Message</th>
-          <th>Date de creation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let reclamation of reclamations">
-          <td>{{ reclamation.id }}</td>
-          <td>{{ reclamation.user.userEmail }}</td>
-          <td>{{ reclamation.subject }}</td>
-          <td>{{ reclamation.description }}</td>
-          <td>{{ reclamation.creationDate}}</td>
-        </tr>
-      </tbody>
-    </table>
+
+<h2>Les Reclamations</h2>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Sujet</th>
+        <th>Message</th>
+        <th>Date de création</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reclamation of reclamations">
+        <td>{{ reclamation.id }}</td>
+        <td>{{ reclamation.user.userEmail }}</td>
+        <td>{{ reclamation.subject }}</td>
+        <td>{{ reclamation.description }}</td>
+        <td>{{ reclamation.creationDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

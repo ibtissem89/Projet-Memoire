@@ -30,10 +30,10 @@ export class AddproductComponent {
       );
       this.service.addproduct(product).subscribe({
         next: (data) => {
-          swal('Good job!', 'Your product has been added!', 'success');
+          swal('Bien  !', 'Votre produit a été ajouté !', 'success');
         },
         error: (err) => {
-          swal('Sorry!', 'You need to try later !', 'error');
+          swal('Désolé !', 'Vous devez réessayer plus tard !', 'error');
         },
       });
     }

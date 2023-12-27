@@ -53,8 +53,8 @@ export class PaymentComponent {
     );
 
     if (!this.cardNumber || !this.expiryDate || !this.cvv || !this.amount) {
-      // Form is invalid
-      swal('err', 'Form is invalid', 'error');
+      // Le formulaire est invalide
+      swal('Erreur', 'Le formulaire est invalide', 'error');
       return;
     }
 
@@ -62,7 +62,8 @@ export class PaymentComponent {
     this.service
       .addNewCommande({ userId: iduser, amount: this.amount })
       .subscribe((data) => {
-        swal('done', 'ur order is in process', 'success');
+        swal('Terminé', 'Votre commande est en cours de traitement', 'success');
       });
-  }
+}
+
 }

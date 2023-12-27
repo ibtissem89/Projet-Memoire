@@ -22,7 +22,7 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
-   Login() {
+  Login() {
     if (this.loginForm.valid) {
       let userlogin: UserLogin = new UserLogin(
         this.loginForm.value.username,
@@ -33,8 +33,8 @@ export class LoginComponent {
       this.service.loginUser(userlogin).subscribe({
         next: (data) => {
           // save user email and ID localstorage
-          localStorage.setItem('_id', data["id"]);
-          localStorage.setItem('_email', data["userEmail"]);
+          localStorage.setItem('_id', data['id']);
+          localStorage.setItem('_email', data['userEmail']);
           localStorage.setItem('_role', data['userRole']);
           const userRole: String = data['userRole'];
           if (userRole.toLowerCase() == 'admin') {
@@ -44,7 +44,7 @@ export class LoginComponent {
           }
         },
         error: (error) => {
-          swal('Oups', 'Username or password wrong', 'error');
+          swal('Oups', "Nom d'utilisateur ou mot de passe incorrect", 'error');
         },
       });
     }

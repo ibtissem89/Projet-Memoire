@@ -54,12 +54,16 @@ export class CheckoutComponent {
         break;
       }
       default: {
-        // cretaing order and saving it
-        const iduser = localStorage.getItem('_id');
+        // Création de la commande et enregistrement
+        const idUtilisateur = localStorage.getItem('_id');
         this.service
-          .addNewCommande({ userId: iduser, amount: this.total })
+          .addNewCommande({ userId: idUtilisateur, montant: this.total })
           .subscribe((data) => {
-            swal('done', 'ur order is in process', 'success');
+            swal(
+              'Terminé',
+              'Votre commande est en cours de traitement',
+              'success'
+            );
           });
       }
     }

@@ -16,37 +16,34 @@
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                 <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                <h5 class="font-weight-semi-bold m-0">14-jours pour changer d'avis</h5>
+                <h5 class="font-weight-semi-bold m-0">14 jours pour changer d'avis</h5>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                 <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                <h5 class="font-weight-semi-bold m-0">Support 24/7</h5>
             </div>
         </div>
     </div>
 </div>
 <!-- Featured End -->
 
-
 <!-- Categories Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5 pb-3">
         <div class="col-lg-4 col-md-6 pb-1" *ngFor="let element of listofCategory">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <p class="text-right">{{element.nbProduct}} Products</p>
+                <p class="text-right">{{element.nbProduct}} Produits</p>
                 <a href="" class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" [src]="'data:image/png;base64,'+element.image" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">{{element.name}}</h5>
             </div>
         </div>
-
     </div>
 </div>
 <!-- Categories End -->
-
 
 <!-- Offer Start -->
 <div class="container-fluid offer pt-5">
@@ -55,9 +52,9 @@
             <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
                 <img src="assets/img/smartphone.jpg" alt="">
                 <div class="position-relative" style="z-index: 1;">
-                    <h5 class="text-uppercase text-primary mb-3">20% sur toutes les commandes</h5>
+                    <h5 class="text-uppercase text-primary mb-3">20% de réduction sur toutes les commandes</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Smartphone</h1>
-                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">j'en profite</a>
+                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">J'en profite</a>
                 </div>
             </div>
         </div>
@@ -65,18 +62,15 @@
             <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
                 <img src="assets/img/offremobile.png" alt="">
                 <div class="position-relative" style="z-index: 1;">
-                    <h5 class="text-uppercase text-primary mb-3">Profitez de Nos Offres</h5>
+                    <h5 class="text-uppercase text-primary mb-3">Profitez de nos offres</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Offre Mobile</h1>
-
-
-                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">j'en profite</a>
+                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">J'en profite</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Offer End -->
-
 
 <!-- Products Start -->
 <div class="container-fluid pt-5">
@@ -96,18 +90,11 @@
                         <h6 class="text-muted ml-2"></h6>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 <!-- Products End -->
-
-
-
-
 
 <!-- Products Start -->
 <div class="container-fluid pt-5">
@@ -127,22 +114,18 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                        Detail</a>
+                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Voir les détails</a>
                     <button  (click)="addToCarte(p)" class="btn btn-sm text-dark p-0"><i
-                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                            class="fas fa-shopping-cart text-primary mr-1"></i>Ajouter au panier</button>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
 <!-- Products End -->
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">Profitez de nos offre Internet et Mobile </span></h2>
-
+        <h2 class="section-title px-5"><span class="px-2">Profitez de nos offres Internet et Mobile </span></h2>
     </div>
     <div class="row px-xl-5 pb-3" *ngFor="let m of mobileProducts">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -150,10 +133,7 @@
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                     <img class="img-fluid w-100" [src]="'data:image/png;base64,'+m.image" alt="">
                 </div>
-
-
             </div>
         </div>
-
     </div>
 </div>

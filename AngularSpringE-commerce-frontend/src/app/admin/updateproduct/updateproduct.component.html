@@ -1,26 +1,23 @@
-<!--   Big container   -->
+<!--   Grand conteneur   -->
 
-
-<!--      Wizard container        -->
+<!--   Conteneur du wizard   -->
 <div class="wizard-container">
 
     <div class="card wizard-card" data-color="orange" id="wizardProfile">
         <form #updateproductform="ngForm">
-            <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+            <!-- Vous pouvez remplacer 'data-color="orange"' par l'une des couleurs vives suivantes : "blue", "green", "orange", "red" -->
 
             <div class="wizard-header">
                 <h3>
-                    <b>UPDATE</b> YOUR PRODUCT <br>
-                    <small>This information will let us know more about the Product.</small>
+                    <b>MISE À JOUR</b> DE VOTRE PRODUIT <br>
+                    <small>Ces informations nous en diront plus sur le produit.</small>
                 </h3>
             </div>
-
-
 
             <div class="tab-content">
                 <div>
                     <div class="row">
-                        <h4 class="info-text"> Let's start with the basic information</h4>
+                        <h4 class="info-text"> Commençons par les informations de base</h4>
                         <div class="col-sm-4 col-sm-offset-1">
                             <div class="picture-container">
                                 <div class="picture">
@@ -29,19 +26,19 @@
                                         id="wizardPicturePreview" title="" />
                                     <input (change)="getfile($event)" type="file" id="wizard-picture">
                                 </div>
-                                <h6>Choose Picture</h6>
+                                <h6>Choisir une image</h6>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Name </label>
+                                <label>Nom </label>
                                 <input type="text" name="name" [(ngModel)]="productbyid.name" class="form-control"
-                                    placeholder="TShirt...">
+                                    placeholder="T-shirt...">
                             </div>
                             <div class="form-group">
                                 <label>Description </label>
-                                <input type="text" name="name" [(ngModel)]="productbyid.description" class="form-control"
-                                    placeholder="TShirt...">
+                                <input type="text" name="name" [(ngModel)]="productbyid.description"
+                                    class="form-control" placeholder="T-shirt...">
                             </div>
                             <div class="form-group">
                                 <label>Prix </label>
@@ -49,8 +46,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Type </label>
-                                <!-- <input type="text" name="type" class="form-control" [(ngModel)]="productbyid.category.name" placeholder="Trandy,..."> -->
-                                <select class="form-control" id="type" [(ngModel)]="productbyid.category.name" name="type">
+                                <!-- <input type="text" name="type" class="form-control" [(ngModel)]="productbyid.category.name" placeholder="Branché,..."> -->
+                                <select class="form-control" id="type" [(ngModel)]="productbyid.category.name"
+                                    name="type">
                                     <option *ngFor="let cat of categories" [value]="cat.name">{{ cat.name }}</option>
                                 </select>
                             </div>
@@ -63,11 +61,11 @@
             <div class="wizard-footer height-wizard">
                 <div class="text-center">
                     <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next'
-                        (click)="updateproduct(updateproductform)" value='Update' />
+                        (click)="updateproduct(updateproductform)" value='Mettre à jour' />
                 </div>
                 <div class="clearfix"></div>
             </div>
 
         </form>
     </div>
-</div> <!-- wizard container -->
+</div> <!-- Conteneur du wizard -->

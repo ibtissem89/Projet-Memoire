@@ -42,19 +42,20 @@ export class UpdateproductComponent implements OnInit {
   }
 
   updateproduct(form: any) {
-    this.productbyid.type=this.productbyid.category.name.toString();
-    delete this.productbyid.category
+    this.productbyid.type = this.productbyid.category.name.toString();
+    delete this.productbyid.category;
     console.log(this.productbyid);
     
     this.service.updateproduct(this.productbyid).subscribe({
       next: (data) => {
-        swal('Good job!', 'Your product has been updated!', 'success');
+        swal('Bien  !', 'Votre produit a été mis à jour !', 'success');
       },
       error: (err) => {
-        swal('Sorry!', 'You need to try later !', 'error');
+        swal('Désolé !', 'Vous devez réessayer plus tard !', 'error');
       },
     });
   }
+
 
   getfile(event: any) {
     const file = event.target.files[0];

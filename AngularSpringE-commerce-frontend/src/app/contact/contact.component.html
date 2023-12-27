@@ -1,9 +1,7 @@
-<!-- Page Header Start -->
+<!-- En-tête de la Page -->
 <app-header></app-header>
 
-
-
-<!-- Contact Start -->
+<!-- Formulaire de Contact -->
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Veuillez préciser votre demande</span></h2>
@@ -15,33 +13,29 @@
                 <form #addcontactform="ngForm">
                     <div class="control-group">
                         <input ngModel type="text" class="form-control" name="nom" id="nom" placeholder="Nom" required="required"
-                            data-validation-required-message="Entrer votre nom" />
+                            data-validation-required-message="Entrez votre nom" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <input ngModel type="email" class="form-control" name="email" id="email" placeholder="Email"
-                            required="required" data-validation-required-message="Entrer Votre Email" />
+                            required="required" data-validation-required-message="Entrez votre Email" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input ngModel type="text" class="form-control" name="sujet" id="subject" placeholder="Subject"
+                        <input ngModel type="text" class="form-control" name="sujet" id="subject" placeholder="Sujet"
                             required="required" data-validation-required-message="Veuillez entrer votre sujet" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <textarea ngModel class="form-control" rows="6" name="message" id="message" placeholder="Message"
-                            required="required" data-validation-required-message="Entrer Votre Message"></textarea>
+                            required="required" data-validation-required-message="Entrez votre Message"></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div>
-                        <button (click)="addcontact(addcontactform)">Envoyer
-                            Message</button>
+                        <button (click)="addcontact(addcontactform)">Envoyer le Message</button>
                     </div>
                 </form>
             </div>
         </div>
-
-
     </div>
 </div>
- 
