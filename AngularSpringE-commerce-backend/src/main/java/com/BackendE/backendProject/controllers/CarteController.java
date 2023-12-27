@@ -49,10 +49,8 @@ public class CarteController {
             Product productRes = productRepository.getproductbyid(product.getIdProduct());
 
             // Create a new cart item
-            CartItem cartItem = new CartItem();
-            cartItem.setOwner(user);
-            cartItem.setProduct(productRes);
-            cartItem.setQuantity(1);
+            CartItem cartItem = new CartItem( user,  productRes,  1);
+ 
 
             // Save the cart item
             cartService.saveItem(cartItem);

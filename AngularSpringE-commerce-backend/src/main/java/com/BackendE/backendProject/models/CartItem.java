@@ -1,8 +1,8 @@
 package com.BackendE.backendProject.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,10 +11,10 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class CartItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
-    @OneToOne
+   @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "owner_id")
     private User owner;
 
@@ -26,8 +26,7 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(Integer id, User owner, Product product, int quantity) {
-        this.id = id;
+    public CartItem(User owner, Product product, int quantity) {
         this.owner = owner;
         this.product = product;
         this.quantity = quantity;

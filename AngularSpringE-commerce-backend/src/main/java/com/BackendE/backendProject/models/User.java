@@ -2,11 +2,15 @@ package com.BackendE.backendProject.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -18,12 +22,16 @@ public class User {
     private String userEmail;
     private String userTel;
     private String password;
-    private String userRole; 
+    private String userRole;
     private String userGenre;
-    
+
     // One-to-Many relationship with Reclamation
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reclamation> reclamations;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<CartItem> myCartItems;
 
     public User(String username, String userLastName, String userEmail, String userTel, String password,
             String userRole, String userGenre) {
