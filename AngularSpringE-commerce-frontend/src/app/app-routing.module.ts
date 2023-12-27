@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShowuserComponent } from './admin/showuser/showuser.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
+import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
   { path: 'vitrine', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: AllvitrineComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-
+  {path:'payment',component:PaymentComponent},
   {
     path: 'admin',
     component: AdminpanelComponent,

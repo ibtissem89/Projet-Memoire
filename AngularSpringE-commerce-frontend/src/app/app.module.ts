@@ -24,6 +24,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SmartphoneComponent } from './smartphone/smartphone.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ReclamationsComponent } from './admin/reclamations/reclamations.compone
     HeaderComponent,
 
     ReclamationsComponent,
+      PaymentComponent,
   ],
   imports: [
     BrowserModule,

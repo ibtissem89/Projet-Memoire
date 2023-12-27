@@ -1,0 +1,94 @@
+<!-- payment.component.html -->
+<div class="container-fluid">
+    <div class="row bg-secondary py-2 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark" href="">FAQs</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Help</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Support</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="text-dark pl-2" href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- payment.component.html -->
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-4">
+          <img src="assets/img/logotelecom.jpg" alt="Secure Icon" class="mr-2" height="30">
+          <h2 class="card-title text-center mb-0">Secure Payment</h2>
+        </div>
+  
+        <form [formGroup]='formInspector' (submit)="processPayment()">
+          <!-- Card Number -->
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <div class="input-group">
+              <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="**** **** **** ****" required>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="far fa-credit-card"></i></span>
+              </div>
+            </div>
+            <small *ngIf="formSubmitted && !cardNumber" class="text-danger">Card number is required.</small>
+          </div>
+  
+          <!-- Expiry Date and CVV -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="expiryDate">Expiry Date</label>
+              <input type="text" id="expiryDate" class="form-control" formControlName="expiryDate" placeholder="MM/YY" required pattern="^(0[1-9]|1[0-2])\/\d{2}$">
+              <small *ngIf="formSubmitted && !expiryDate" class="text-danger">Expiry date is required.</small>
+              <!-- <small *ngIf='formSubmitted && expiryDate && !expiryDate.match("/^(0[1-9]|1[0-2])\/\d{2}$/")' class="text-danger">Invalid expiry date format (MM/YY).</small> -->
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" class="form-control" formControlName="cvv" placeholder="***" required pattern="^\d{3}$">
+              <small *ngIf="formSubmitted && !cvv" class="text-danger">CVV is required.</small>
+              <!-- <small *ngIf='formSubmitted && cvv && !cvv.match("/^\d{3}$/")' class="text-danger">Invalid CVV format (3 digits).</small> -->
+            </div>
+          </div>
+  
+          <!-- Amount -->
+          <div class="form-group">
+            <label for="amount">Amount: {{this.amount}}</label>
+ 
+          </div>
+  
+          <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+        </form>
+  
+        <!-- Feedback Messages -->
+        <div class="mt-3 text-center">
+          <div *ngIf="paymentSuccess" class="text-success">
+            <i class="fas fa-check-circle"></i> Payment successful!
+          </div>
+          <div *ngIf="paymentError" class="text-danger">
+            <i class="fas fa-exclamation-circle"></i> Payment failed. Please try again.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

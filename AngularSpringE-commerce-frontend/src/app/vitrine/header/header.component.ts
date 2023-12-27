@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   constructor(private service: ProjectServiceService) {}
   ngOnInit() {
-    const storedEmail = localStorage.getItem('_email');
+    const storedEmail = localStorage.getItem('_email'); 
     const iduser = localStorage.getItem('_id');
 
     if (storedEmail !== null && storedEmail !== undefined) {

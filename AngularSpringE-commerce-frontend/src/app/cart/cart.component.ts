@@ -68,6 +68,7 @@ export class CartComponent {
     );
   }
   calculTotale() {
+    this.total=0;
     this.cartItems.map((i: any) => (this.total += i.product.prix * i.quantity));
   }
   toPayment() {

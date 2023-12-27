@@ -7,13 +7,23 @@ public class ProductReq {
     private  String prix;
     private String image;
     private String type;
+     private String description;
 
-    public ProductReq(Integer idProduct, String name, String prix, String image, String type) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ProductReq(Integer idProduct, String name, String prix, String image, String type,String description) {
         this.idProduct = idProduct;
         this.name = name;
         this.prix = prix;
         this.image = image;
         this.type = type;
+        this.description=description;
     }
 
     public ProductReq(String name, String prix, String image, String type) {

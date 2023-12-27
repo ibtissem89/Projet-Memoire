@@ -23,6 +23,7 @@ export class AddproductComponent {
     if (this.filebase64 != '') {
       let product = new Addproduct(
         valueofform.name,
+        valueofform.description,
         valueofform.prix,
         valueofform.type,
         this.filebase64

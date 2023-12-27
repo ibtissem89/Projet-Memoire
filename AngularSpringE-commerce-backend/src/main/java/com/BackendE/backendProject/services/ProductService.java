@@ -44,7 +44,7 @@ public class ProductService {
         Blob b = new SerialBlob(decodedByte);
         // getting category by type name
         Category categoryRes = catgeoryService.getCatogoryByName(productReq.getType()).get();
-        Product p = new Product(productReq.getName(), productReq.getPrix(), b, categoryRes);
+        Product p = new Product(productReq.getName(), productReq.getPrix(), b, categoryRes,productReq.getDescription());
         productRepository.save(p);
         Message m = new Message("Product has been added ! ");
         return m;
@@ -66,6 +66,7 @@ public class ProductService {
             productByid.setPrix(productReq.getPrix());
             productByid.setCategory(categoryRes);
             productByid.setImage(b);
+             productByid.setDescription(productReq.getDescription());
             productRepository.save(productByid);
             Message m = new Message("Product has been updated ! ");
             return m;

@@ -66,4 +66,8 @@ export class ProjectServiceService {
   getCartItems(idUser: number) {
     return this.http.get(`http://localhost:8080/carte/getCartItems/${idUser}`);
   }
+  addNewCommande(commande:any){
+    return this.http.post(`http://localhost:8080/commandes/new`,commande);
+
+  }
 }

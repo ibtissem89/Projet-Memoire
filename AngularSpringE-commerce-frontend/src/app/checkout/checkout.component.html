@@ -1,6 +1,5 @@
 <app-header></app-header>
 
-
 <!-- Checkout Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
@@ -44,32 +43,6 @@
                         <input class="form-control" type="text" placeholder="123">
                     </div>
 
-                    <div class="card border-secondary mb-5">
-                        <div class="card-header bg-secondary border-0">
-                            <h4 class="font-weight-semi-bold m-0">choix de Livraison</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                    <label class="custom-control-label" for="paypal">Direct</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                    <label class="custom-control-label" for="directcheck">Carte visa</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                    <label class="custom-control-label" for="banktransfer">Paiement au compte</label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
 
@@ -109,27 +82,26 @@
                     <h4 class="font-weight-semi-bold m-0">Paiement</h4>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                            <label class="custom-control-label" for="paypal">Direct</label>
+                    <form>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" [(ngModel)]="selectedPaymentMethod"
+                                    value="directcheck" name="payment" id="directcheck">
+                                <label class="custom-control-label" for="directcheck">Direct</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                            <label class="custom-control-label" for="directcheck">Carte visa</label>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" [(ngModel)]="selectedPaymentMethod"
+                                    value="visa" name="payment" id="visa">
+                                <label class="custom-control-label" for="visa">Carte visa</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                            <label class="custom-control-label" for="banktransfer">Paienement au compte</label>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="card-footer border-secondary bg-transparent">
-                    <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Passer la
+                    <button (click)="passerCmd()"
+                        class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Passer la
                         commande</button>
                 </div>
             </div>

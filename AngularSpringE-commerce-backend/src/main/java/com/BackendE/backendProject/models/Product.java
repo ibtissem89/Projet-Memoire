@@ -25,6 +25,16 @@ public class Product {
     @ManyToOne
     private Category category;
 
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -39,19 +49,21 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer idProduct, String name, String prix, Blob image, Category type) {
+    public Product(Integer idProduct, String name, String prix, Blob image, Category type, String description) {
         this.idProduct = idProduct;
         this.name = name;
         this.prix = prix;
         this.image = image;
         this.category = type;
+        this.description = description;
     }
 
-    public Product(String name, String prix, Blob image, Category type) {
+    public Product(String name, String prix, Blob image, Category type, String description) {
         this.name = name;
         this.prix = prix;
         this.image = image;
         this.category = type;
+        this.description = description;
     }
 
     public Integer getIdProduct() {
