@@ -3,7 +3,6 @@ package com.BackendE.backendProject.services;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,8 +49,8 @@ public class CommandeService {
         String formattedDateTime = currentDateTime.format(formatter);
         orderEntity.setOrderDate(formattedDateTime);
         orderEntity.setAmount(order.getAmount());
-        orderEntity.setStatus("not approved");// default until admin approve on it 
-
+        orderEntity.setStatus("not approved");// default until admin approve on it
+        orderEntity.setAdressLivraison(order.getAdressLivraison());
         // Save the order to get the generated ID
         Commande savedOrder = commandeRepository.save(orderEntity);
 

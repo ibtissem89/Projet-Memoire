@@ -12,28 +12,43 @@ import java.sql.Blob;
 @Entity
 public class Category {
 
+    // Primary key for the Category entity
     @Id
     @GeneratedValue
     private Integer idCategory;
+
     private String name;
+
+    // Number of products in the category
     private Integer nbProduct;
 
+    // Large object field for storing image data
     @Lob
     @JsonSerialize(using = SqlBlobSerializer.class)
     private Blob image;
 
+    // Constructors
+
+    // Default constructor
     public Category() {
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "idCategory=" + idCategory +
-                ", name='" + name + '\'' +
-                ", nbProduct=" + nbProduct +
-                ", image=" + image +
-                '}';
+    // Constructor with name, nbProduct, and image parameters
+    public Category(String name, Integer nbProduct, Blob image) {
+        this.name = name;
+        this.nbProduct = nbProduct;
+        this.image = image;
     }
+
+    // Constructor with idCategory, name, nbProduct, and image parameters
+    public Category(Integer idCategory, String name, Integer nbProduct, Blob image) {
+        this.idCategory = idCategory;
+        this.name = name;
+        this.nbProduct = nbProduct;
+        this.image = image;
+    }
+
+    // Getters and Setters
 
     public Integer getIdCategory() {
         return idCategory;
@@ -67,16 +82,15 @@ public class Category {
         this.image = image;
     }
 
-    public Category(String name, Integer nbProduct, Blob image) {
-        this.name = name;
-        this.nbProduct = nbProduct;
-        this.image = image;
+    // toString method for debugging and logging purposes
+    @Override
+    public String toString() {
+        return "Category{" +
+                "idCategory=" + idCategory +
+                ", name='" + name + '\'' +
+                ", nbProduct=" + nbProduct +
+                ", image=" + image +
+                '}';
     }
 
-    public Category(Integer idCategory, String name, Integer nbProduct, Blob image) {
-        this.idCategory = idCategory;
-        this.name = name;
-        this.nbProduct = nbProduct;
-        this.image = image;
-    }
 }

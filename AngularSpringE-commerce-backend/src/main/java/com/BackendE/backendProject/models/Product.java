@@ -16,55 +16,46 @@ public class Product {
     @Id
     @GeneratedValue
     private Integer idProduct;
+
     private String name;
+
     private String prix;
+
+    private String description;
+
+    // Large object field for storing image data
     @Lob
     @JsonSerialize(using = SqlBlobSerializer.class)
     private Blob image;
 
+    // Many-to-One relationship with the Category entity
     @ManyToOne
     private Category category;
 
-    private String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "idProduct=" + idProduct +
-                ", name='" + name + '\'' +
-                ", prix='" + prix + '\'' +
-                ", image='" + image + '\'' +
-                ", type='" + category.getName() + '\'' +
-                '}';
-    }
-
+    // Default constructor
     public Product() {
     }
 
-    public Product(Integer idProduct, String name, String prix, Blob image, Category type, String description) {
+    // Constructor with all parameters, including idProduct
+    public Product(Integer idProduct, String name, String prix, Blob image, Category category, String description) {
         this.idProduct = idProduct;
         this.name = name;
         this.prix = prix;
         this.image = image;
-        this.category = type;
+        this.category = category;
         this.description = description;
     }
 
-    public Product(String name, String prix, Blob image, Category type, String description) {
+    // Constructor with all parameters, excluding idProduct (auto-generated)
+    public Product(String name, String prix, Blob image, Category category, String description) {
         this.name = name;
         this.prix = prix;
         this.image = image;
-        this.category = type;
+        this.category = category;
         this.description = description;
     }
+
+    // Getters and Setters
 
     public Integer getIdProduct() {
         return idProduct;
@@ -106,4 +97,23 @@ public class Product {
         this.category = category;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // toString method for debugging and logging purposes
+    @Override
+    public String toString() {
+        return "Product{" +
+                "idProduct=" + idProduct +
+                ", name='" + name + '\'' +
+                ", prix='" + prix + '\'' +
+                ", image='" + image + '\'' +
+                ", category='" + category.getName() + '\'' +
+                '}';
+    }
 }

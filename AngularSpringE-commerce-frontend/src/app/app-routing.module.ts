@@ -17,6 +17,7 @@ import { ShowuserComponent } from './admin/showuser/showuser.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CommandesComponent } from './admin/commandes/commandes.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'vitrine', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: AllvitrineComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'commandes', component: CommandesComponent },
       { path: 'updateproduct/:id', component: UpdateproductComponent },
       { path: 'reclamations', component: ReclamationsComponent },
+      { path: '', component: DashboardComponent },
     ],
   },
   { path: '**', component: ErrorPathRoutingComponent },

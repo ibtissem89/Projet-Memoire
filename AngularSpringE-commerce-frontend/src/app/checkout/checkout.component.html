@@ -6,44 +6,45 @@
         <div class="col-lg-8">
             <div class="mb-4">
                 <h4 class="font-weight-semi-bold mb-4">Adresse de Facturation</h4>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label>Nom</label>
-                        <input class="form-control" type="text" placeholder="Nom">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Prénom</label>
-                        <input class="form-control" type="text" placeholder="Prénom">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>E-mail</label>
-                        <input class="form-control" type="text" placeholder="exemple@exemple.com">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>N° Tél</label>
-                        <input class="form-control" type="text" placeholder="Tél">
-                    </div>
+                <form [formGroup]="transportForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Nom</label>
+                            <input class="form-control" type="text" placeholder="Nom">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Prénom</label>
+                            <input class="form-control" type="text" placeholder="Prénom">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="exemple@exemple.com">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>N° Tél</label>
+                            <input class="form-control" type="text" placeholder="Tél">
+                        </div>
 
-                    <div class="col-md-6 form-group">
-                        <label>Adresse</label>
-                        <input class="form-control" type="text" placeholder="Adresse">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Pays</label>
-                        <select class="custom-select">
-                            <option selected>Tunis</option>
-                            <option>Ariana</option>
-                            <option>Manouba</option>
-                            <option>Ben Arous</option>
-                        </select>
-                    </div>
+                        <div class="col-md-6 form-group">
+                            <label>Adresse</label>
+                            <input class="form-control" type="text" formControlName="adresse" placeholder="Adresse">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Pays</label>
+                            <select formControlName="ville" class="custom-select">
+                                <option value="Tunis" selected>Tunis</option>
+                                <option value="Ariana">Ariana</option>
+                                <option value="Manouba">Manouba</option>
+                                <option value="Ben Arous">Ben Arous</option>
+                            </select>
+                        </div>
 
-                    <div class="col-md-6 form-group">
-                        <label>Code postal</label>
-                        <input class="form-control" type="text" placeholder="123">
+                        <div class="col-md-6 form-group">
+                            <label>Code postal</label>
+                            <input formControlName="zipCode" class="form-control" type="text" placeholder="123">
+                        </div>
                     </div>
-
-                </div>
+                </form>
             </div>
 
 

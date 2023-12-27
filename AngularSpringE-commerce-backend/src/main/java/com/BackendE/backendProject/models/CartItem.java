@@ -6,31 +6,40 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class CartItem {
+
+    // Primary key for the CartItem entity
     @Id
     @GeneratedValue
     private Integer id;
 
-   @ManyToOne(cascade = CascadeType.PERSIST)
+    // Many-to-One relationship with the User entity (owner of the cart item)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "owner_id")
     private User owner;
 
+    // Many-to-One relationship with the Product entity
     @ManyToOne
     private Product product;
 
     private int quantity;
 
+    // Constructors
+
+    // Default constructor
     public CartItem() {
     }
 
+    // Constructor with all parameters
     public CartItem(User owner, Product product, int quantity) {
         this.owner = owner;
         this.product = product;
         this.quantity = quantity;
     }
+
+    // Getters and Setters
 
     public Integer getId() {
         return id;

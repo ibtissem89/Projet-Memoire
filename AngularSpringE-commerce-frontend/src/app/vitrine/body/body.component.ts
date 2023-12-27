@@ -10,7 +10,6 @@ import swal from 'sweetalert';
 })
 export class BodyComponent implements OnInit {
   listofproduct: any[] = [];
-  listofCategory: any[] = [];
   mobileProducts: any[] = [];
   smartphoneProducts: any[] = [];
   constructor(private service: ProjectServiceService, private router: Router) {}
@@ -27,18 +26,15 @@ export class BodyComponent implements OnInit {
         );
       },
     });
-    this.service.getallCategorys().subscribe({
-      next: (data) => {
-        this.listofCategory = data;
-      },
-    });
   }
   addToCarte(product: any) {
     const iduser = localStorage.getItem('_id');
     if (iduser == null || iduser == undefined) {
-      swal('Connectez-vous d\'abord !', 'Vous devez d\'abord vous connecter', 'warning').finally(() =>
-        this.router.navigate(['login'])
-      );
+      swal(
+        "Connectez-vous d'abord !",
+        "Vous devez d'abord vous connecter",
+        'warning'
+      ).finally(() => this.router.navigate(['login']));
       this.router.navigate(['login']);
     } else {
       this.service.addToCarte(Number(iduser), product).subscribe((items) => {
@@ -46,5 +42,4 @@ export class BodyComponent implements OnInit {
       });
     }
   }
-  
 }

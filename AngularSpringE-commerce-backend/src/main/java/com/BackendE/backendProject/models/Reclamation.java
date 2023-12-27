@@ -5,11 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Reclamation {
+
+    // Primary key for the Reclamation entity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,37 +18,34 @@ public class Reclamation {
 
     @Column(columnDefinition = "TEXT")
     private String description;
-    // Many-to-One relationship with User
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
+ 
+    private String user;
+
+    // Creation date of the reclamation
     private String creationDate;
 
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
+    // Default constructor
     public Reclamation() {
     }
 
-    public Reclamation(String subject, String description, User user,String creationDate) {
+    // Constructor with subject, description, user, and creationDate parameters
+    public Reclamation(String subject, String description, String user, String creationDate) {
         this.subject = subject;
         this.description = description;
         this.user = user;
-        this.creationDate=creationDate;
+        this.creationDate = creationDate;
     }
 
-    public Reclamation(Long id, String subject, String description, User user) {
+    // Constructor with id, subject, description, and user parameters
+    public Reclamation(Long id, String subject, String description, String user) {
         this.id = id;
         this.subject = subject;
         this.description = description;
         this.user = user;
     }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -74,12 +71,19 @@ public class Reclamation {
         this.description = description;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
 }

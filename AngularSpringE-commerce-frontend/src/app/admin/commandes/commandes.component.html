@@ -3,8 +3,11 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Nom du client</th>
             <th>Email</th>
-            <th>Amount</th>
+            <th>Télephone</th>
+            <th>Adresse de livraison</th>
+            <th>Totale a payée</th>
             <th>Date de création</th>
             <th>Status</th>
             <th>Action</th>
@@ -13,15 +16,18 @@
     <tbody>
         <tr *ngFor="let cmd of commandes">
             <td>{{ cmd.id }}</td>
-            <td>{{ cmd.user.userEmail }}</td>
+            <td>{{ cmd.user.username}} {{cmd.user.userLastName }}</td>
+            <td>{{ cmd.user.userEmail}}</td>
+            <td>{{ cmd.user.userTel}}</td>
+            <td>{{ cmd.adressLivraison}} </td>
             <td>{{ cmd.amount }}</td>
             <td>{{ cmd.orderDate }}</td>
             <td>{{ cmd.status }} </td>
             <td>
                 <button class="btn btn-warning  ms-2" (click)="updateStatus(cmd.id, cmd.status)"
-                *ngIf="cmd.status=='not approved'">Accepter</button>
+                    *ngIf="cmd.status=='not approved'">Accepter</button>
                 <button class="btn btn-warning  ms-2" (click)="updateStatus(cmd.id, cmd.status)"
-                *ngIf="cmd.status=='accepted'">Ne pas accepter</button>
+                    *ngIf="cmd.status=='accepted'">Ne pas accepter</button>
             </td>
         </tr>
     </tbody>

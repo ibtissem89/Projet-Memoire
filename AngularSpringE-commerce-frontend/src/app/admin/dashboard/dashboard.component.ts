@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectServiceService } from 'src/app/project-service.service';
 
 @Component({
-  selector: 'app-adminpanel',
-  templateUrl: './adminpanel.component.html',
-  styleUrls: ['./adminpanel.component.css','../sidebar/sidebar.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AdminpanelComponent implements OnInit {
- 
+export class DashboardComponent {
+  listofCategory:any[]=[]
   constructor(private router:Router,private service: ProjectServiceService){}
   ngOnInit(): void {
 
@@ -16,8 +16,10 @@ export class AdminpanelComponent implements OnInit {
     if(role==null||role==undefined||role.toLowerCase()!="admin"){
       this.router.navigate(['notFound']);
     }
-   
+    this.service.getallCategorys().subscribe({
+      next: (data) => {
+        this.listofCategory = data;
+      },
+    });
   }
-  
-
 }

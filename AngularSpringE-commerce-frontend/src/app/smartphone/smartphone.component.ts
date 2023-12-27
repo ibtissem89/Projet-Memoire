@@ -23,13 +23,13 @@ export class SmartphoneComponent {
   addToCarte(product: any) {
     const iduser = localStorage.getItem('_id');
     if (iduser == null || iduser == undefined) {
-      swal('login first!', 'u need to login first', 'warning').finally(() =>
+      swal('Connectez-vous d\'abord !', 'Vous devez d\'abord vous connecter', 'warning').finally(() =>
         this.router.navigate(['login'])
       );
       this.router.navigate(['login']);
     } else {
       this.service.addToCarte(Number(iduser), product).subscribe((items) => {
-        swal('Great!', 'Your choice has been added to ur carte!', 'success');
+        swal('Super !', 'Votre choix a été ajouté à votre panier !', 'success');
       });
     }
   }

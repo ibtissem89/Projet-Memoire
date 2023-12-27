@@ -35,8 +35,7 @@ public class ReclamationService {
     }
 
     public Reclamation createReclamation(ReclamationReq reclamation) {
-        User resUser = loginService.getUserByEmail(reclamation.getEmail());
-        LocalDateTime currentDateTime = LocalDateTime.now();
+         LocalDateTime currentDateTime = LocalDateTime.now();
 
         // Define a formatter to format the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -45,9 +44,9 @@ public class ReclamationService {
         String formattedDateTime = currentDateTime.format(formatter);
 
         Reclamation resRec = reclamationRepository
-                .save(new Reclamation(reclamation.getSujet(), reclamation.getMessage(), resUser, formattedDateTime));
-        String msg = "votre reclamation" + reclamation.getSujet() + " est bien recu par notre equipe";
-        emailService.sendEmail(resUser.getUserEmail(), "Confirmation reception", msg);
+                .save(new Reclamation(reclamation.getSujet(), reclamation.getMessage(), reclamation.getEmail(), formattedDateTime));
+        String msg = "Madame, Monsieur\n, Nous accusons réception de votre reclamation du" + formattedDateTime + " et vous confirmons qu’elle sera exécutée par notre equipe";
+        emailService.sendEmail(reclamation.getEmail(), "Confirmation reception reclamation", msg);
         return resRec;
     }
 

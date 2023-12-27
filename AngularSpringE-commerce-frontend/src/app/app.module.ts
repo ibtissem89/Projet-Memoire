@@ -26,6 +26,7 @@ import { MobileComponent } from './mobile/mobile.component';
 import { ReclamationsComponent } from './admin/reclamations/reclamations.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CommandesComponent } from './admin/commandes/commandes.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CommandesComponent } from './admin/commandes/commandes.component';
     ReclamationsComponent,
       PaymentComponent,
       CommandesComponent,
+      DashboardComponent,
   ],
   imports: [
     BrowserModule,

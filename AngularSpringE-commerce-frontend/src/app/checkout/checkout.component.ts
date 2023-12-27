@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectServiceService } from '../project-service.service';
 import swal from 'sweetalert';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -16,7 +17,18 @@ export class CheckoutComponent {
   expirationDate: string = '';
   cvv: string = '';
   selectedPaymentMethod: string = 'direct';
-  constructor(private router: Router, private service: ProjectServiceService) {}
+  transportForm: FormGroup;
+  constructor(
+    private router: Router,
+    private service: ProjectServiceService,
+    private fb: FormBuilder
+  ) {
+    this.transportForm = this.fb.group({
+      adresse: ['', [Validators.required]],
+      zipCode: ['', [Validators.required, Validators.minLength(4)]],
+      ville: [''],
+    });
+  }
 
   submitPayment() {
     console.log('Payment submitted!');
@@ -56,8 +68,20 @@ export class CheckoutComponent {
       default: {
         // Création de la commande et enregistrement
         const idUtilisateur = localStorage.getItem('_id');
+        const adresseLivraison: string =
+          this.transportForm.value.adresse +
+          ' ' +
+          this.transportForm.value.ville +
+          ' ' +
+          this.transportForm.value.zipCode;
+          console.log(adresseLivraison);
+          
         this.service
-          .addNewCommande({ userId: idUtilisateur, montant: this.total })
+          .addNewCommande({
+            userId: idUtilisateur,
+            amount: this.total,
+            adressLivraison: adresseLivraison,
+          })
           .subscribe((data) => {
             swal(
               'Terminé',

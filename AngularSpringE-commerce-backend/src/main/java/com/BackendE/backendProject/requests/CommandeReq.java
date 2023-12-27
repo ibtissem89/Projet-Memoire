@@ -4,6 +4,17 @@ public class CommandeReq {
     private Long id;
     private Integer userId;
     private double amount;
+    private String adressLivraison;
+
+    public String getAdressLivraison() {
+        return adressLivraison;
+    }
+
+ 
+
+    public void setAdressLivraison(String adressLivraison) {
+        this.adressLivraison = adressLivraison;
+    }
 
     public double getAmount() {
         return amount;
